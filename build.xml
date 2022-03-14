@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project default="main">
+    <property name="target" location="target"/>
+    <property name="src" location="./src/com/sqli"/>
+    <property name="build" location="bin"/>
+
+
+    <target name="main" depends="init,compile, compress">
+        <echo>
+            Building the .jar file.
+        </echo>
+    </target>
+
+    <target name="init">
+        <mkdir dir="${target}"/>
+        <mkdir dir="${build}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${target}"/>
+        <delete dir="${build}"/>
+    </target>
+
+    <target name="compile" depends="init">
+        <javac srcdir="${src}" destdir="${target}"/>
+    </target>
+
+    <target name="compress" depends="compile">
+        <jar basedir="${target}" destfile="${build}/Project.jar" includes="*.class">
+        <manifest>
+            <attribute name="Main-Class" value="${src}/Main"/>
+        </manifest>
+        </jar>
+    </target>
+</project>

@@ -15,6 +15,8 @@ public class Main {
         // write your code here
         String mycat = cat();
         String mydog = dog();
+        System.out.println(mycat);
+        System.out.println(mydog);
 
 
     }
